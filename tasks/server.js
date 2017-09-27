@@ -13,6 +13,6 @@ gulp.task('serve', (cb)=>{
     })
 
     gulp.watch(['server/routes/**/*.js', 'server/app.js'], function(){
-        server.strat.bind(server)()
+        server.start.bind(server)()
     })
 })

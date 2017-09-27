@@ -23,7 +23,8 @@ gulp.task('scripts', ()=>{
         module:{
             loaders:[{
                 test:/\.js$/,
-                loader: 'babel'
+                loader: 'babel-loader',
+                exclude: /node_modules/
             }]
         }
     }),null,(err, stats)=>{
@@ -38,5 +39,5 @@ gulp.task('scripts', ()=>{
     }))
     .pipe(uglify({compress:{properties:false},output:{'quote_keys':true}}))
     .pipe(gulp.dest('server/public/js'))
-    .pipe(gulpif(args.watch.livereload()))
+    .pipe(gulpif(args.watch, livereload()))
 })
